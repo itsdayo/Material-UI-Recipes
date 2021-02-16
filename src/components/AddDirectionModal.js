@@ -11,7 +11,7 @@ import {
   FormControl,
   makeStyles,
 } from "@material-ui/core";
-import { postDirection, saveCurrentRecipe } from "../actions/recipes";
+import { addNewDirection, saveCurrentRecipe } from "../actions/recipes";
 import { useSelector, useDispatch } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,7 +85,7 @@ function AddDirection(props) {
       optional,
     };
 
-    dispatch(postDirection(newDirection));
+    dispatch(addNewDirection(newDirection));
     dispatch(saveCurrentRecipe());
     handleClose();
   }

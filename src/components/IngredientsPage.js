@@ -1,121 +1,100 @@
+import styled from "styled-components";
 import React, { useState, useEffect } from "react";
-import "./../style.css";
+import "./Home.css";
 import {
   AppBar,
-  makeStyles,
   Toolbar,
   Typography,
+  makeStyles,
   Button,
   Grid,
   Card,
-  CardContent,
   CardActions,
+  CardContent,
   CardActionArea,
-} from "@material-ui/core/";
+} from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getCurrentRecipe } from "../actions/recipes";
-import AddDirection from "./AddDirectionModal";
-import EditDirection from "./EditDirectionModal";
+import AddIngredient from "./AddIngredientModal";
+import EditIngredient from "./EditIngredientModal";
+import {
+  getCurrentRecipe,
+  updateIngredient,
+  saveCurrentRecipe,
+} from "../actions/recipes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   specialsButton: {},
-  addRecipeButton: {
-    left: 10,
-  },
+
   navButtonContainer: {
     marginRight: theme.spacing(3),
     right: 0,
     position: "absolute",
   },
 
-  directionsList: {
-    marginLeft: 350,
-  },
   gridList: {
     height: "auto",
     flexWrap: "wrap",
-
     overflow: "auto",
     paddingTop: 50,
   },
 
   card: {
     maxWidth: 345,
-    width: 500,
+    width: 345,
     display: "block",
     overflowY: "scroll",
     marginLeft: 150,
   },
-
-  directionsInstruction: {
-    fontSize: 20,
-  },
-  directionsOptional: {
-    fontSize: 18,
-  },
 }));
 
-function Directions() {
+function Ingredients() {
   const history = useHistory();
   const dispatch = useDispatch();
   const { recipeId } = useParams();
   const [open, setOpen] = useState(false);
   const [openForEdit, setOpenForEdit] = useState(false);
-  const [currentDirection, setCurrentDirection] = useState({});
-  const [currentDirectionIndex, setCurrentDirectionIndex] = useState(0);
+  const [currentIngredient, setCurrentIngredient] = useState({});
   const classes = useStyles();
-
-  //get current recipe by uuid in params
   useEffect(() => {
     dispatch(getCurrentRecipe(recipeId));
   }, []);
 
-  const directions = useSelector(
-    (state) => state.recipes.currentRecipe.directions
+  //grad the current ingredient from redux
+  const ingredients = useSelector(
+    (state) => state.recipes.currentRecipe.ingredients
   );
 
+  //open the add new ingredient modal
   const handleClickOpen = () => {
     setOpen(true);
   };
 
+  //close the add new ingredient modal
   const handleClose = (value) => {
     setOpen(false);
   };
 
+  //close the edit ingredient modal
   const handleEditClose = (value) => {
     setOpenForEdit(false);
   };
 
-  //push current recipe to state to prefill form
-  const handleClickEditOpen = (tile, index) => {
-    setCurrentDirection(tile);
-
-    setCurrentDirectionIndex(index);
+  //open the edit ingredient modal and set the current ingredient click to state
+  const handleClickEditOpen = (tile) => {
+    setCurrentIngredient(tile);
     setOpenForEdit(true);
   };
-
-  //change option to show yes or no
-  function changeOptionToString(value) {
-    if (value === false || value === undefined || value === "") {
-      return "No";
-    } else {
-      return "Yes";
-    }
-  }
 
   return (
     <React.Fragment>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Directions
+            Recipe List
           </Typography>
           <div className={classes.navButtonContainer}>
             <Button
@@ -132,7 +111,7 @@ function Directions() {
               color="inherit"
               onClick={handleClickOpen}
             >
-              Add Direction
+              Add Ingredient
             </Button>
             <Button
               variant="outlined"
@@ -146,51 +125,46 @@ function Directions() {
         </Toolbar>
       </AppBar>
 
-      <AddDirection open={open} onClose={handleClose} />
-      <EditDirection
-        currentDirection={currentDirection}
+      <AddIngredient open={open} onClose={handleClose} />
+      <EditIngredient
+        currentIngredient={currentIngredient}
         open={openForEdit}
-        index={currentDirectionIndex}
         onClose={handleEditClose}
       />
-      <div className={classes.directionsList}>
+      <div className={classes.ingredientsList}>
         <Grid
           className={classes.gridList}
           container
           justify="center"
           spacing={1}
         >
-          {directions.map((tile, index) => (
-            <Grid container item xs={12} spacing={0.1}>
+          {ingredients.map((tile, index) => (
+            <Grid container item xs={12} sm={6} spacing={0.1}>
               <Card className={classes.card}>
                 <CardActionArea>
                   <CardContent>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="div"
-                      className="text-center"
-                    >
-                      <span className={classes.directionsInstruction}>
-                        {tile.instructions}
-                      </span>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {tile.name}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="textSecondary"
-                      component="div"
-                      className="text-center"
+                      component="p"
                     >
-                      <span className={classes.directionsOptional}>
-                        {" "}
-                        Optional: {changeOptionToString(tile.optional)}
-                      </span>
+                      Measurement: {tile.measurement}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Amount: {tile.amount}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
                 <CardActions disableSpacing>
                   <Button
-                    onClick={() => handleClickEditOpen(tile, index)}
+                    onClick={() => handleClickEditOpen(tile)}
                     size="small"
                     color="primary"
                   >
@@ -206,4 +180,4 @@ function Directions() {
   );
 }
 
-export default Directions;
+export default Ingredients;

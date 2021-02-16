@@ -17,7 +17,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
-import { postNewRecipe } from "../actions/recipes";
+import { addRecipe, postNewRecipe } from "../actions/recipes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -157,7 +157,7 @@ function AddRecipe(props) {
 
     onClose();
 
-    dispatch(postNewRecipe(newRecipe));
+    dispatch(addRecipe(newRecipe));
   }
 
   //create ingredients for recipe

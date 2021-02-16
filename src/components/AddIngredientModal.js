@@ -10,7 +10,7 @@ import {
 import Box from "@material-ui/core/Box";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { postIngredient, saveCurrentRecipe } from "../actions/recipes";
+import { addNewIngredient, saveCurrentRecipe } from "../actions/recipes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,7 +75,7 @@ function AddIngredient(props) {
       measurement: measurement,
     };
 
-    dispatch(postIngredient(newIngredient));
+    dispatch(addNewIngredient(newIngredient));
     dispatch(saveCurrentRecipe());
     handleClose();
   }

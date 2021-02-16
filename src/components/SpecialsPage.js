@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./../style.css";
+import "./Home.css";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getSpecials } from "../actions/specials";
@@ -15,7 +15,6 @@ import {
   CardActionArea,
   makeStyles,
 } from "@material-ui/core";
-import "./../style.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {

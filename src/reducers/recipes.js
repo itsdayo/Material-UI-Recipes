@@ -3,9 +3,9 @@ import {
   GET_RECIPES_SUCCESS,
   GET_CURRENT_RECIPE_SUCCESS,
   UPDATE_INGREDIENT,
-  POST_INGREDIENT,
+  ADD_NEW_INGREDIENT,
   UPDATE_DIRECTION,
-  POST_DIRECTION,
+  ADD_NEW_DIRECTION,
   UPDATE_RECIPE,
   ADD_RECIPE,
 } from "../actions/recipes";
@@ -42,21 +42,36 @@ const recipesReducer = (state = initialState, action) => {
         );
 
         draft.currentRecipe.ingredients[ingredientIndex] = action.ingredient;
+        const updateIngredientsIndex = draft.recipesList.findIndex(
+          (recipe) => (recipe.uuid = draft.currentRecipe.uuid)
+        );
+        draft.recipesList[updateIngredientsIndex] = draft.currentRecipe;
         break;
 
-      case POST_INGREDIENT:
+      case ADD_NEW_INGREDIENT:
         draft.currentRecipe.ingredients.push(action.ingredient);
-
+        const newIngredientsIndex = draft.recipesList.findIndex(
+          (recipe) => (recipe.uuid = draft.currentRecipe.uuid)
+        );
+        draft.recipesList[newIngredientsIndex] = draft.currentRecipe;
         break;
 
       case UPDATE_DIRECTION:
         const directionIndex = action.directionIndex;
+
         draft.currentRecipe.directions[directionIndex] = action.direction;
+        const updateDirectionsIndex = draft.recipesList.findIndex(
+          (recipe) => (recipe.uuid = draft.currentRecipe.uuid)
+        );
+        draft.recipesList[updateDirectionsIndex] = draft.currentRecipe;
         break;
 
-      case POST_DIRECTION:
+      case ADD_NEW_DIRECTION:
         draft.currentRecipe.directions.push(action.direction);
-
+        const newDirectionsIndex = draft.recipesList.findIndex(
+          (recipe) => (recipe.uuid = draft.currentRecipe.uuid)
+        );
+        draft.recipesList[newDirectionsIndex] = draft.currentRecipe;
         break;
 
       case ADD_RECIPE:
