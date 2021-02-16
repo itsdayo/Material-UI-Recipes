@@ -19,6 +19,7 @@ export const UPDATE_RECIPE = "UPDATE_RECIPE";
 
 //get all recipes
 export function getRecipes() {
+  console.log("pizzaaa");
   return getRecipesSuccess(mockRecipes.recipes);
 
   // Always use upsert for both inserts and modifies
