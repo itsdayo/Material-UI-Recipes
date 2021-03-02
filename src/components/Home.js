@@ -157,6 +157,14 @@ function App() {
               variant="outlined"
               className={classes.addRecipeButton}
               color="inherit"
+              onClick={handleClickOpen}
+            >
+              Add Recipe
+            </Button>
+            <Button
+              variant="outlined"
+              className={classes.addRecipeButton}
+              color="inherit"
               onClick={reset}
             >
               Reset Recipes
