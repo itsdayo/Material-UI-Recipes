@@ -1,4 +1,4 @@
-# Recipe Builder
+# Material UI Recipe Builder
 
 A recipe application to display json data. Add recipes with ingredients and directions. You are also allowed to edit recipes, ingredients and directions.
 
