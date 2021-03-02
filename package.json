@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "API-based frontend skill test",
   "private": true,
-  "homepage": "http://itsdayo.github.io/Material-UI-Recipe",
+  "homepage": "http://itsdayo.github.io/Material-UI-Recipes",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
