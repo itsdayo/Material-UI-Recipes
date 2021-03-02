@@ -161,3 +161,6 @@ export function saveCurrentRecipeSuccess(recipe) {
     recipe,
   };
 }
+export function resetRecipes() {
+  return getRecipesSuccess(mockRecipes.recipes);
+}

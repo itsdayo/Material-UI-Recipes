@@ -6,7 +6,8 @@ export const mockRecipes = {
       description: "A delicious breakfast, fit for a crowd.",
       images: {
         full: "/img/queso_brat_scramble.jpg",
-        medium: "/img/queso_brat_scramble--m.jpg",
+        medium:
+          "https://snowpanther.s3.amazonaws.com/uploads%2F260c59e0-7b17-11eb-93ee-8f77a80b84fa.jpg",
         small: "/img/queso_brat_scramble--s.jpg",
       },
       servings: 5,
@@ -162,7 +163,8 @@ export const mockRecipes = {
       description: "Quick, easy and authentic.",
       images: {
         full: "/img/italian_meatballs.jpg",
-        medium: "/img/italian_meatballs--m.jpg",
+        medium:
+          "https://snowpanther.s3.amazonaws.com/uploads%2Fdcacda10-7b14-11eb-93ee-8f77a80b84fa.jpg",
         small: "/img/italian_meatballs--s.jpg",
       },
       servings: 6,
@@ -244,7 +246,8 @@ export const mockRecipes = {
       description: "A polish delicacy.",
       images: {
         full: "/img/kielbasa_skillet.jpg",
-        medium: "/img/kielbasa_skillet--m.jpg",
+        medium:
+          "https://snowpanther.s3.amazonaws.com/uploads%2F29928550-7b15-11eb-93ee-8f77a80b84fa.jpg",
         small: "/img/kielbasa_skillet--s.jpg",
       },
       servings: 8,
@@ -336,7 +339,8 @@ export const mockRecipes = {
       description: "Tasty, crispy, spicy and healthy!",
       images: {
         full: "/img/brussel_chips.jpg",
-        medium: "/img/brussel_chips--m.jpg",
+        medium:
+          "https://snowpanther.s3.amazonaws.com/uploads%2Feb994e60-7b13-11eb-93ee-8f77a80b84fa.jpg",
         small: "/img/brussel_chips--s.jpg",
       },
       servings: 4,
@@ -413,7 +417,8 @@ export const mockRecipes = {
       description: "A giant stack of pancakes to share or to horde.",
       images: {
         full: "/img/pancake_mountain.jpg",
-        medium: "/img/pancake_mountain--m.jpg",
+        medium:
+          "https://snowpanther.s3.amazonaws.com/uploads%2F5d2c3500-7b15-11eb-93ee-8f77a80b84fa.jpg",
         small: "/img/pancake_mountain--s.jpg",
       },
       servings: 8,

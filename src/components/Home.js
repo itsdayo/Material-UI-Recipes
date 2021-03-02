@@ -22,7 +22,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import { getRecipes } from "../actions";
 import AddRecipe from "./AddRecipeModal";
 import EditRecipe from "./EditRecipeModal";
-import { getRecipes, loadRecipes } from "../actions/recipes";
+import { getRecipes, loadRecipes, resetRecipes } from "../actions/recipes";
 import { mockRecipes } from "../mockData/recipes";
 
 const BoldText = styled.span`
@@ -126,10 +126,15 @@ function App() {
       pathname: `/directions/${foodItem.uuid}`,
     });
   };
+
   const handleNavigateIngredientsClick = (foodItem) => {
     history.push({
       pathname: `/ingredients/${foodItem.uuid}`,
     });
+  };
+
+  const reset = () => {
+    dispatch(resetRecipes());
   };
 
   return (
@@ -152,9 +157,9 @@ function App() {
               variant="outlined"
               className={classes.addRecipeButton}
               color="inherit"
-              onClick={handleClickOpen}
+              onClick={reset}
             >
-              Add Recipe
+              Reset Recipes
             </Button>
           </div>
         </Toolbar>
