@@ -13,7 +13,7 @@ import { PersistGate } from "redux-persist/integration/react";
 const App = () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/ingredients/:recipeId" component={Ingredients} />
