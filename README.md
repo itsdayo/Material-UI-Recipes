@@ -12,7 +12,7 @@ To run this application you must
 - `npm start`
 
 <p align="center">
-    <img alt="recipe" src="./img/RecipeHomepage.png" width="550">
+    <img alt="recipe" src="./img/RecipesHomepage.jpg" width="550">
 </p>
 
 ```
