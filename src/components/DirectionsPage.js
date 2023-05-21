@@ -6,7 +6,6 @@ import {
   Toolbar,
   Typography,
   Button,
-  Grid,
   Card,
   CardContent,
   CardActions,
@@ -34,9 +33,10 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     position: "absolute",
   },
-
   directionsList: {
-    marginLeft: 350,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
   gridList: {
     height: "auto",
@@ -45,15 +45,14 @@ const useStyles = makeStyles((theme) => ({
     overflow: "auto",
     paddingTop: 50,
   },
-
   card: {
-    maxWidth: 345,
     width: 500,
-    display: "block",
-    overflowY: "scroll",
-    marginLeft: 150,
+    height: 150,
+    alignSelf: "center",
+    marginTop: 20,
+    display: "flex",
+    backgroundColor: "#F0F0F0",
   },
-
   directionsInstruction: {
     fontSize: 20,
   },
@@ -154,53 +153,44 @@ function Directions() {
         onClose={handleEditClose}
       />
       <div className={classes.directionsList}>
-        <Grid
-          className={classes.gridList}
-          container
-          justify="center"
-          spacing={1}
-        >
-          {directions.map((tile, index) => (
-            <Grid container item xs={12} spacing={0.1}>
-              <Card className={classes.card}>
-                <CardActionArea>
-                  <CardContent>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="div"
-                      className="text-center"
-                    >
-                      <span className={classes.directionsInstruction}>
-                        {tile.instructions}
-                      </span>
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="div"
-                      className="text-center"
-                    >
-                      <span className={classes.directionsOptional}>
-                        {" "}
-                        Optional: {changeOptionToString(tile.optional)}
-                      </span>
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions disableSpacing>
-                  <Button
-                    onClick={() => handleClickEditOpen(tile, index)}
-                    size="small"
-                    color="primary"
-                  >
-                    Edit
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        {directions.map((tile, index) => (
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardContent>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="div"
+                  className="text-center"
+                >
+                  <span className={classes.directionsInstruction}>
+                    {tile.instructions}
+                  </span>
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="div"
+                  className="text-center"
+                >
+                  <span className={classes.directionsOptional}>
+                    {" "}
+                    Optional: {changeOptionToString(tile.optional)}
+                  </span>
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions disableSpacing>
+              <Button
+                onClick={() => handleClickEditOpen(tile, index)}
+                size="small"
+                color="primary"
+              >
+                Edit
+              </Button>
+            </CardActions>
+          </Card>
+        ))}
       </div>
     </React.Fragment>
   );

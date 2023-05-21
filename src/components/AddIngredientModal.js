@@ -6,11 +6,14 @@ import {
   DialogTitle,
   Dialog,
   makeStyles,
+  Typography,
+  IconButton,
 } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { addNewIngredient, saveCurrentRecipe } from "../actions/recipes";
+import { Close } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +39,16 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 40,
     marginLeft: 100,
     marginTop: 50,
+  },
+  title: {
+    margin: 0,
+    padding: "0 0 10px 12px",
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(2) + 2,
+    top: 12,
+    color: theme.palette.grey[500],
   },
 }));
 
@@ -85,10 +98,20 @@ function AddIngredient(props) {
       maxWidth={"xs"}
       fullWidth={true}
       onClose={handleClose}
-      aria-labelledby="edit-ingredient"
+      aria-labelledby="add-ingredient"
       open={open}
     >
-      <DialogTitle id="edit-ingredient">Edit Ingredient</DialogTitle>
+      <DialogTitle id="add-ingredient">
+        <Typography variant="h6"> Add Ingredient </Typography>
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={handleClose}
+          classes={{ root: classes.icon_padding }}
+        >
+          <Close />
+        </IconButton>
+      </DialogTitle>
 
       <form className={classes.form} noValidate autoComplete="off">
         <div>

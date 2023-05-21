@@ -11,6 +11,8 @@ import {
   MenuItem,
   FormControl,
   makeStyles,
+  Typography,
+  IconButton,
 } from "@material-ui/core";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -18,6 +20,7 @@ import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 
 import { saveCurrentRecipe, updateDirection } from "../actions/recipes";
+import { Close } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,6 +47,16 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 40,
     marginLeft: 90,
     marginTop: 50,
+  },
+  title: {
+    margin: 0,
+    padding: "0 0 10px 12px",
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(2) + 2,
+    top: 12,
+    color: theme.palette.grey[500],
   },
 }));
 
@@ -103,11 +116,20 @@ function EditDirection(props) {
       maxWidth={"xs"}
       fullWidth={true}
       onClose={handleClose}
-      aria-labelledby="edit-ingredient"
+      aria-labelledby="edit-direction"
       open={open}
     >
-      <DialogTitle id="edit-ingredient">Edit Ingredient</DialogTitle>
-
+      <DialogTitle id="edit-direction">
+        <Typography variant="h6"> Edit Direction </Typography>
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={handleClose}
+          classes={{ root: classes.icon_padding }}
+        >
+          <Close />
+        </IconButton>
+      </DialogTitle>
       <form className={classes.form} noValidate autoComplete="off">
         <div>
           <InputLabel id="instruction">Instruction</InputLabel>

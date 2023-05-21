@@ -1,4 +1,3 @@
-import axios from "axios";
 import { mockRecipes } from "./../mockData/recipes";
 export const GET_SPECIALS_SUCCESS = "GET_SPECIALS_SUCCESS";
 

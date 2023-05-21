@@ -7,7 +7,7 @@ A recipe application to display json data. Add recipes with ingredients and dire
 ##### Running Locally
 
 To run this application you must
-
+- node 14.17.3
 - `npm i`
 - `npm start`
 

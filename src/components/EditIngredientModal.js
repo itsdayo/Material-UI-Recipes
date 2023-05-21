@@ -8,6 +8,8 @@ import {
   Dialog,
   Box,
   makeStyles,
+  Typography,
+  IconButton,
 } from "@material-ui/core";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -15,6 +17,7 @@ import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 
 import { updateIngredient, saveCurrentRecipe } from "../actions/recipes";
+import { Close } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,6 +48,16 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 90,
     marginTop: 50,
   },
+  title: {
+    margin: 0,
+    padding: "0 0 10px 12px",
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(2) + 2,
+    top: 12,
+    color: theme.palette.grey[500],
+  },
 }));
 
 function EditIngredient(props) {
@@ -55,7 +68,7 @@ function EditIngredient(props) {
   const [name, setName] = useState(currentIngredient.name);
   const [measurement, setMeasurement] = useState(currentIngredient.measurement);
   const [amount, setAmount] = useState(currentIngredient.amount);
-  console.log(currentIngredient);
+
   useEffect(() => {
     //get recipes for state
     setName(currentIngredient.name);
@@ -110,8 +123,17 @@ function EditIngredient(props) {
       aria-labelledby="edit-ingredient"
       open={open}
     >
-      <DialogTitle id="edit-ingredient">Edit Ingredient</DialogTitle>
-
+      <DialogTitle id="edit-ingredient">
+        <Typography variant="h6"> Edit Ingredient </Typography>
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={handleClose}
+          classes={{ root: classes.icon_padding }}
+        >
+          <Close />
+        </IconButton>
+      </DialogTitle>
       <form className={classes.form} noValidate autoComplete="off">
         <div>
           <InputLabel id="name">Name</InputLabel>

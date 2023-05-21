@@ -38,14 +38,21 @@ const useStyles = makeStyles((theme) => ({
 
   card: {
     width: 500,
-    display: "block",
-    overflowY: "scroll",
-    marginLeft: 390,
+    height: 150,
+    alignSelf: "center",
+    marginTop: 20,
+    display: "flex",
+    backgroundColor: "#F0F0F0",
   },
   boldText: {
     fontWeight: "bold",
   },
   specialsTitle: {},
+  specialsList: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
 }));
 
 function Specials() {
@@ -80,58 +87,48 @@ function Specials() {
       </AppBar>
 
       <div className={classes.specialsList}>
-        <Grid
-          className={classes.gridList}
-          container
-          justify="center"
-          spacing={1}
-        >
-          {specials &&
-            specials.specialsList.map((tile, index) => (
-              <Grid container item xs={12} spacing={0.1}>
-                <Card className={classes.card}>
-                  <CardActionArea>
-                    <CardContent>
-                      <Typography variant="h6" className="text-center">
-                        <span className="specials-title">{tile.title}</span>
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="div"
-                        className="text-center"
-                      >
-                        <span classNane="specials-text">{tile.text}</span>
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="div"
-                        className="text-center"
-                      >
-                        <span className="specails-type">
-                          <span className="bold-text">type:</span> {tile.type}
-                        </span>
-                      </Typography>
-                      {tile.code && (
-                        <Typography
-                          variant="body2"
-                          color="textSecondary"
-                          component="div"
-                          className="text-center"
-                        >
-                          <span className="specials-code">
-                            <span className="bold-text">USE CODE:</span>{" "}
-                            {tile.code}
-                          </span>
-                        </Typography>
-                      )}
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            ))}
-        </Grid>
+        {specials &&
+          specials.specialsList.map((tile, index) => (
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardContent>
+                  <Typography variant="h6" className="text-center">
+                    <span className="specials-title">{tile.title}</span>
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="div"
+                    className="text-center"
+                  >
+                    <span classNane="specials-text">{tile.text}</span>
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="div"
+                    className="text-center"
+                  >
+                    <span className="specails-type">
+                      <span className="bold-text">type:</span> {tile.type}
+                    </span>
+                  </Typography>
+                  {tile.code && (
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="div"
+                      className="text-center"
+                    >
+                      <span className="specials-code">
+                        <span className="bold-text">USE CODE:</span> {tile.code}
+                      </span>
+                    </Typography>
+                  )}
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          ))}
       </div>
     </React.Fragment>
   );

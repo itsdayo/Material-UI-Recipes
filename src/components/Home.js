@@ -15,6 +15,7 @@ import {
   CardContent,
   CardActions,
   CardActionArea,
+  Box,
 } from "@material-ui/core";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -24,10 +25,6 @@ import AddRecipe from "./AddRecipeModal";
 import EditRecipe from "./EditRecipeModal";
 import { getRecipes, loadRecipes, resetRecipes } from "../actions/recipes";
 import { mockRecipes } from "../mockData/recipes";
-
-const BoldText = styled.span`
-  font-weight: 700;
-`;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,36 +47,27 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
-  recipeList: {
-    display: "flex",
-    flexWrap: "wrap",
-    // justifyContent: "space-around",
-    overflow: "hidden",
-    backgroundColor: theme.palette.background.paper,
-    paddingLeft: 15,
-    paddingRight: 15,
-    marginTop: 40,
-  },
   gridList: {
     height: "auto",
     flexWrap: "wrap",
-
     overflow: "auto",
   },
-
+  recipesList: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    flexWrap: "wrap",
+  },
   card: {
-    maxWidth: 345,
-    display: "block",
-    overflowY: "scroll",
-
-    height: "35vw",
-
-    backgroundColor: "#ffefd5",
+    width: 345,
+    marginLeft: 5,
+    height: 580,
+    alignSelf: "center",
   },
   media: {
-    height: 400,
-    paddingTop: "56.25%", // 16:9
-    marginTop: -190,
+    height: 250,
+    display: "flex",
+    top: 0,
   },
 }));
 
@@ -179,117 +167,110 @@ function App() {
         open={openForEdit}
         onClose={handleEditClose}
       />
-      <div className={classes.recipeList}>
-        <Grid
-          className={classes.gridList}
-          container
-          justify="center"
-          spacing={1}
-        >
-          {recipes.recipesList.map((tile, index) => (
-            <Grid container item xs={12} sm={6} md={4} spacing={0.01}>
-              <Card>
-                <CardActionArea>
-                  {tile.images && (
-                    <CardMedia
-                      className={classes.media}
-                      image={tile.images.medium}
-                      title="Paella dish"
-                      component="img"
-                    />
-                  )}
-                  {!tile.images && (
-                    <CardMedia
-                      className={classes.media}
-                      src={
-                        "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made.jpg"
-                      }
-                      title="Paella dish"
-                      component="img"
-                    />
-                  )}
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {tile.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {tile.description}
-                    </Typography>
-                  </CardContent>
-                  <CardContent>
-                    <Typography
-                      gutterBottom
-                      color="textSecondary"
-                      variant="body2"
-                      component="div"
-                    >
-                      Servings: {tile.servings}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="div"
-                      gutterBottom
-                    >
-                      Prep time: {tile.prepTime}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="div"
-                      gutterBottom
-                    >
-                      Cook time: {tile.cookTime}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="div"
-                      gutterBottom
-                    >
-                      Posted: {tile.postDate}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="div"
-                      gutterBottom
-                    >
-                      Edited: {tile.editDate}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions disableSpacing>
-                  <Button
-                    onClick={() => handleNavigateDirectionsClick(tile)}
-                    size="small"
-                    color="primary"
+      <div className={classes.recipesList}>
+        {recipes.recipesList.map((tile, index) => (
+          <Card className={classes.card}>
+            <CardActionArea>
+              <div>
+                {tile.images && (
+                  <CardMedia
+                    className={classes.media}
+                    image={tile.images.medium}
+                    title="Paella dish"
+                    component="img"
+                  />
+                )}
+                {!tile.images && (
+                  <CardMedia
+                    className={classes.media}
+                    src={
+                      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made.jpg"
+                    }
+                    title="Paella dish"
+                    component="img"
+                  />
+                )}
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {tile.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
                   >
-                    View Directions
-                  </Button>
-                  <Button
-                    onClick={() => handleNavigateIngredientsClick(tile)}
-                    size="small"
-                    color="primary"
+                    {tile.description}
+                  </Typography>
+                </CardContent>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    color="textSecondary"
+                    variant="body2"
+                    component="div"
                   >
-                    View Ingredients
-                  </Button>
-                  <Button
-                    onClick={() => handleClickEditOpen(tile)}
-                    size="small"
-                    color="primary"
+                    Servings: {tile.servings}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="div"
+                    gutterBottom
                   >
-                    Edit
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                    Prep time: {tile.prepTime}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="div"
+                    gutterBottom
+                  >
+                    Cook time: {tile.cookTime}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="div"
+                    gutterBottom
+                  >
+                    Posted: {tile.postDate}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="div"
+                    gutterBottom
+                  >
+                    Edited: {tile.editDate}
+                  </Typography>
+                </CardContent>
+              </div>
+            </CardActionArea>
+            <CardActions disableSpacing>
+              <Button
+                onClick={() => handleNavigateDirectionsClick(tile)}
+                size="small"
+                color="primary"
+              >
+                View Directions
+              </Button>
+              <Button
+                onClick={() => handleNavigateIngredientsClick(tile)}
+                size="small"
+                color="primary"
+              >
+                View Ingredients
+              </Button>
+              <Button
+                onClick={() => handleClickEditOpen(tile)}
+                size="small"
+                color="primary"
+              >
+                Edit
+              </Button>
+            </CardActions>
+          </Card>
+        ))}
       </div>
     </React.Fragment>
   );

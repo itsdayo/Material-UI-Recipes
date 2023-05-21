@@ -10,6 +10,8 @@ import {
   Button,
   TextField,
   TextareaAutosize,
+  Typography,
+  IconButton,
 } from "@material-ui/core";
 
 import styled from "styled-components";
@@ -17,6 +19,7 @@ import styled from "styled-components";
 import { updateRecipe, saveCurrentRecipe } from "../actions/recipes";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
+import { Close } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,14 +48,22 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 40,
     marginTop: 50,
   },
+  title: {
+    margin: 0,
+    padding: "0 0 10px 12px",
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(2) + 2,
+    top: 12,
+    color: theme.palette.grey[500],
+  },
 }));
 
 function EditRecipe(props) {
   const classes = useStyles();
   const { onClose, open, currentRecipe } = props;
   const dispatch = useDispatch();
-
-  console.log(currentRecipe.title);
 
   const [title, setTitle] = useState(currentRecipe.title);
   const [description, setDescription] = useState(currentRecipe.description);
@@ -94,7 +105,6 @@ function EditRecipe(props) {
 
   const handleCookTimeChange = (e) => {
     setCookTime(e.target.value);
-    console.log(e.target.value);
   };
 
   function editItem(form) {
@@ -116,7 +126,6 @@ function EditRecipe(props) {
       directions: currentRecipe.directions,
       ingredients: currentRecipe.ingredients,
     };
-    console.log(newRecipe);
 
     //dipatch recipe to update
     dispatch(updateRecipe(newRecipe));
@@ -133,8 +142,17 @@ function EditRecipe(props) {
       aria-labelledby="edit-recipe"
       open={open}
     >
-      <DialogTitle id="edit-recipe">Edit Recipe</DialogTitle>
-
+      <DialogTitle id="edit-recipe">
+        <Typography variant="h6"> Edit Recipe </Typography>
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={handleClose}
+          classes={{ root: classes.icon_padding }}
+        >
+          <Close />
+        </IconButton>
+      </DialogTitle>
       <Grid justify="center" container spacing={12}>
         <Grid container item xs={6} spacing={3}>
           <form className={classes.form} noValidate autoComplete="off">

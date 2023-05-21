@@ -1,7 +1,4 @@
-import { ContactSupportOutlined } from "@material-ui/icons";
-import axios from "axios";
 import { mockRecipes } from "./../mockData/recipes";
-var minimongo = require("minimongo");
 
 export const GET_RECIPES_SUCCESS = "GET_RECIPES_SUCCESS";
 export const ADD_RECIPE = "ADD_RECIPE";
@@ -19,7 +16,6 @@ export const UPDATE_RECIPE = "UPDATE_RECIPE";
 
 //get all recipes
 export function getRecipes() {
-  console.log("pizzaaa");
   return getRecipesSuccess(mockRecipes.recipes);
 
   // Always use upsert for both inserts and modifies
@@ -52,7 +48,6 @@ export function getCurrentRecipe(recipeId) {
     if (recipes) {
       // get current recipe from state
       currentRecipe = recipes.filter((recipe) => recipe.uuid === recipeId);
-      console.log(currentRecipe);
     } else {
       currentRecipe = mockRecipes.recipes.filter(
         (recipe) => recipe.uuid === recipeId
@@ -60,7 +55,6 @@ export function getCurrentRecipe(recipeId) {
 
       //get current recipe from mock data
     }
-    console.log(currentRecipe[0]);
 
     dispatch(getCurrentRecipeSuccess(currentRecipe[0]));
 
@@ -87,11 +81,9 @@ export function updateRecipe(recipe) {
 
 export function saveCurrentRecipe() {
   return function (dispatch, getState) {
-    const recipe = getState().recipes.currentRecipe;
-    const recipes = getState().recipes.recipesList;
+    // const recipe = getState().recipes.currentRecipe;
+    // const recipes = getState().recipes.recipesList;
     // whatever action that updates currentRecipes needs to update Recipes
-
-    console.log("test", recipes);
   };
   //   return axios
   //     .put(`http://localhost:3001/recipes/${recipe.uuid}`, recipe)

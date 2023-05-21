@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Button,
   TextField,
@@ -13,11 +13,13 @@ import {
   FormControl,
   Grid,
   makeStyles,
+  IconButton,
 } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
 import { addRecipe, postNewRecipe } from "../actions/recipes";
+import { Close } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,6 +47,16 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 100,
     marginTop: 50,
   },
+  title: {
+    margin: 0,
+    padding: "0 0 10px 12px",
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(2) + 2,
+    top: 12,
+    color: theme.palette.grey[500],
+  },
 }));
 
 function AddRecipe(props) {
@@ -67,6 +79,8 @@ function AddRecipe(props) {
   const [directions, setDriections] = useState([]);
 
   const handleClose = () => {
+    setIngredients([]);
+    setDriections([]);
     onClose();
   };
 
@@ -120,7 +134,7 @@ function AddRecipe(props) {
 
   //add Direction to a list before submitting
   function addDirection() {
-    const arr = directions;
+    const arr = [...directions];
     const formDirection = {};
     formDirection["optional"] = optional;
     formDirection["instruction"] = instruction;
@@ -132,7 +146,7 @@ function AddRecipe(props) {
       formDirection.optional = "No";
     }
     arr.push(formDirection);
-    setDriections(() => [...arr]);
+    setDriections(arr);
   }
 
   const dispatch = useDispatch();
@@ -156,13 +170,14 @@ function AddRecipe(props) {
     };
 
     onClose();
-
+    setIngredients([]);
+    setDriections([]);
     dispatch(addRecipe(newRecipe));
   }
 
   //create ingredients for recipe
   function addIngredient(data) {
-    let arr = ingredients;
+    let arr = [...ingredients];
     const formInstruction = {};
     formInstruction["name"] = name;
     formInstruction["amount"] = amount;
@@ -170,8 +185,7 @@ function AddRecipe(props) {
     formInstruction.uuid = uuidv4();
 
     arr.push(formInstruction);
-    setIngredients(() => [...arr]);
-    console.log(ingredients);
+    setIngredients(arr);
   }
 
   return (
@@ -181,8 +195,17 @@ function AddRecipe(props) {
       aria-labelledby="add-recipe"
       open={open}
     >
-      <DialogTitle id="add-recipe">Add Recipe</DialogTitle>
-
+      <DialogTitle id="add-recipe">
+        <Typography variant="h6"> Add Recipe </Typography>
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={handleClose}
+          classes={{ root: classes.icon_padding }}
+        >
+          <Close />
+        </IconButton>
+      </DialogTitle>
       <Grid justify="center" container spacing={12}>
         <Grid container item xs={4} spacing={3}>
           <form className={classes.form} noValidate autoComplete="off">

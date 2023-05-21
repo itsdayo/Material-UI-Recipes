@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import {
@@ -17,11 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import AddIngredient from "./AddIngredientModal";
 import EditIngredient from "./EditIngredientModal";
-import {
-  getCurrentRecipe,
-  updateIngredient,
-  saveCurrentRecipe,
-} from "../actions/recipes";
+import { getCurrentRecipe } from "../actions/recipes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,20 +29,24 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     position: "absolute",
   },
-
   gridList: {
     height: "auto",
     flexWrap: "wrap",
     overflow: "auto",
     paddingTop: 50,
   },
-
+  ingredientsList: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
   card: {
-    maxWidth: 345,
-    width: 345,
-    display: "block",
-    overflowY: "scroll",
-    marginLeft: 150,
+    width: 500,
+    height: 150,
+    alignSelf: "center",
+    marginTop: 20,
+    display: "flex",
+    backgroundColor: "#F0F0F0",
   },
 }));
 
@@ -132,49 +131,32 @@ function Ingredients() {
         onClose={handleEditClose}
       />
       <div className={classes.ingredientsList}>
-        <Grid
-          className={classes.gridList}
-          container
-          justify="center"
-          spacing={1}
-        >
-          {ingredients.map((tile, index) => (
-            <Grid container item xs={12} sm={6} spacing={0.1}>
-              <Card className={classes.card}>
-                <CardActionArea>
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {tile.name}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Measurement: {tile.measurement}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      Amount: {tile.amount}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions disableSpacing>
-                  <Button
-                    onClick={() => handleClickEditOpen(tile)}
-                    size="small"
-                    color="primary"
-                  >
-                    Edit
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        {ingredients.map((tile, index) => (
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {tile.name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Measurement: {tile.measurement}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Amount: {tile.amount}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions disableSpacing>
+              <Button
+                onClick={() => handleClickEditOpen(tile)}
+                size="small"
+                color="primary"
+              >
+                Edit
+              </Button>
+            </CardActions>
+          </Card>
+        ))}
       </div>
     </React.Fragment>
   );
