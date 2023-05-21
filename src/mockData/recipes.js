@@ -7,7 +7,7 @@ export const mockRecipes = {
       images: {
         full: "/img/queso_brat_scramble.jpg",
         medium:
-          "https://snowpanther.s3.amazonaws.com/uploads%2F260c59e0-7b17-11eb-93ee-8f77a80b84fa.jpg",
+          "https://lh3.googleusercontent.com/KTToql6W8SkbvOD9hosyHJ2x70B_muQSWrBcxt7_tmK73OowbpHIdw7GxdyBP75J2-U85jKtgzHcOK1wSR2CKQ=w1280-h1280-c-rw-v1-e365",
         small: "/img/queso_brat_scramble--s.jpg",
       },
       servings: 5,
@@ -164,7 +164,7 @@ export const mockRecipes = {
       images: {
         full: "/img/italian_meatballs.jpg",
         medium:
-          "https://snowpanther.s3.amazonaws.com/uploads%2Fdcacda10-7b14-11eb-93ee-8f77a80b84fa.jpg",
+          "https://www.jocooks.com/wp-content/uploads/2012/11/italian-meatballs-1-2-1.jpg",
         small: "/img/italian_meatballs--s.jpg",
       },
       servings: 6,
@@ -247,7 +247,7 @@ export const mockRecipes = {
       images: {
         full: "/img/kielbasa_skillet.jpg",
         medium:
-          "https://snowpanther.s3.amazonaws.com/uploads%2F29928550-7b15-11eb-93ee-8f77a80b84fa.jpg",
+          "https://iamhomesteader.com/wp-content/uploads/2022/02/roasted-potato-kielbasa.jpg",
         small: "/img/kielbasa_skillet--s.jpg",
       },
       servings: 8,
@@ -340,7 +340,7 @@ export const mockRecipes = {
       images: {
         full: "/img/brussel_chips.jpg",
         medium:
-          "https://snowpanther.s3.amazonaws.com/uploads%2Feb994e60-7b13-11eb-93ee-8f77a80b84fa.jpg",
+          "https://www.saveur.com/uploads/2019/03/18/WDXMZ7OD2CTZUJO2QJ2SEVCRYM.jpg?auto=webp",
         small: "/img/brussel_chips--s.jpg",
       },
       servings: 4,
@@ -418,7 +418,7 @@ export const mockRecipes = {
       images: {
         full: "/img/pancake_mountain.jpg",
         medium:
-          "https://snowpanther.s3.amazonaws.com/uploads%2F5d2c3500-7b15-11eb-93ee-8f77a80b84fa.jpg",
+          "https://www.visitglenarbor.com/wp-content/uploads/2023/02/Pancakes-SQ_8FCDABA8-5056-BF65-D63C6D0E8356400D_8fce6d5c-5056-bf65-d67b4080febc7caa-1.jpg",
         small: "/img/pancake_mountain--s.jpg",
       },
       servings: 8,
@@ -530,16 +530,14 @@ export const mockRecipes = {
       type: "promocode",
       code: "GETMILK",
       title: "$1 off Milk",
-      text:
-        "Use the promocode GETMILK on Peapod and receive $1 off your next gallon!",
+      text: "Use the promocode GETMILK on Peapod and receive $1 off your next gallon!",
     },
     {
       uuid: "c6912eeb-f686-482d-8bf4-c118510a4069",
       ingredientId: "77ae45d7-659b-4cb5-a4ea-07f00e442974",
       type: "sale",
       title: "Eriksens Hand Rolled Butter",
-      text:
-        "Flash this recipe at a Roundy's near you and get 10% off Eriksens Hand Rolled Butter, salted or unsalted.",
+      text: "Flash this recipe at a Roundy's near you and get 10% off Eriksens Hand Rolled Butter, salted or unsalted.",
     },
   ],
 };
