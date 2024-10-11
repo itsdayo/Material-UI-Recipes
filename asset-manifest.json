@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Material-UI-Recipes/static/css/main.d09dad29.chunk.css",
-    "main.js": "/Material-UI-Recipes/static/js/main.aa715fd3.chunk.js",
-    "main.js.map": "/Material-UI-Recipes/static/js/main.aa715fd3.chunk.js.map",
+    "main.js": "/Material-UI-Recipes/static/js/main.2b410429.chunk.js",
+    "main.js.map": "/Material-UI-Recipes/static/js/main.2b410429.chunk.js.map",
     "runtime-main.js": "/Material-UI-Recipes/static/js/runtime-main.cbbba66b.js",
     "runtime-main.js.map": "/Material-UI-Recipes/static/js/runtime-main.cbbba66b.js.map",
     "static/js/2.1e68258c.chunk.js": "/Material-UI-Recipes/static/js/2.1e68258c.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.cbbba66b.js",
     "static/js/2.1e68258c.chunk.js",
     "static/css/main.d09dad29.chunk.css",
-    "static/js/main.aa715fd3.chunk.js"
+    "static/js/main.2b410429.chunk.js"
   ]
 }
