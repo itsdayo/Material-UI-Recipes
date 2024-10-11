@@ -74,7 +74,7 @@ function Directions() {
   //get current recipe by uuid in params
   useEffect(() => {
     dispatch(getCurrentRecipe(recipeId));
-  }, []);
+  }, [dispatch, recipeId]);
 
   const directions = useSelector(
     (state) => state.recipes.currentRecipe.directions
@@ -102,7 +102,7 @@ function Directions() {
 
   //change option to show yes or no
   function changeOptionToString(value) {
-    if (value === false || value === undefined || value === "") {
+    if (!value || value === "No") {
       return "No";
     } else {
       return "Yes";
@@ -164,7 +164,7 @@ function Directions() {
                   className="text-center"
                 >
                   <span className={classes.directionsInstruction}>
-                    {tile.instructions}
+                    {tile.instruction}
                   </span>
                 </Typography>
                 <Typography

@@ -57,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
     top: 12,
     color: theme.palette.grey[500],
   },
+  imageTextField: {
+    width: "75%",
+  },
 }));
 
 function AddRecipe(props) {
@@ -64,7 +67,7 @@ function AddRecipe(props) {
   const { onClose, open } = props;
 
   const [name, setName] = useState("");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(0);
   const [measurement, setMeasurement] = useState("");
 
   const [title, setTitle] = useState("");
@@ -72,9 +75,10 @@ function AddRecipe(props) {
   const [servings, setServings] = useState("");
   const [prepTime, setPrepTime] = useState("");
   const [cookTime, setCookTime] = useState("");
-  const [optional, setOptional] = useState(false);
+  const [optional, setOptional] = useState("");
   const [instruction, setInstruction] = useState("");
-  const [openOptions, setOptionsOpen] = React.useState(false);
+  const [image, setImage] = useState("");
+  const [openOptions, setOptionsOpen] = useState(false);
   const [ingredients, setIngredients] = useState([]);
   const [directions, setDriections] = useState([]);
 
@@ -123,6 +127,10 @@ function AddRecipe(props) {
     setMeasurement(e.target.value);
   };
 
+  const handleImageChange = (e) => {
+    setImage(e.target.value);
+  };
+
   //open the options list
   const handleOptionsOpen = () => {
     setOptionsOpen(true);
@@ -147,6 +155,8 @@ function AddRecipe(props) {
     }
     arr.push(formDirection);
     setDriections(arr);
+    setInstruction("");
+    setOptional("");
   }
 
   const dispatch = useDispatch();
@@ -167,6 +177,7 @@ function AddRecipe(props) {
       ingredients: ingredients,
       directions: directions,
       postDate: dateAndTime,
+      images: { medium: image },
     };
 
     onClose();
@@ -186,6 +197,9 @@ function AddRecipe(props) {
 
     arr.push(formInstruction);
     setIngredients(arr);
+    setName("");
+    setAmount(0);
+    setMeasurement("");
   }
 
   return (
@@ -258,6 +272,7 @@ function AddRecipe(props) {
                 label="Ingredient Name"
                 placeholder="Enter the ingredient name"
                 onChange={handleNameChange}
+                value={name}
               />
               <TextField
                 id="amount"
@@ -266,14 +281,16 @@ function AddRecipe(props) {
                 inputProps={{
                   step: 0.1,
                 }}
+                value={amount}
                 type="number"
                 onChange={handleAmountChange}
               />
               <TextField
                 id="measurement"
-                label="Mesurement"
+                label="Measurement"
                 placeholder="Enter the measurement"
                 onChange={handleMeasurementChange}
+                value={measurement}
               />
               <Button
                 onClick={addIngredient}
@@ -311,6 +328,7 @@ function AddRecipe(props) {
                 placeholder="Enter an instruction"
                 className="instruction-text-area"
                 onChange={handleInstructionChange}
+                value={instruction}
               />
               <FormControl className="optionalFormControl">
                 <InputLabel
@@ -327,8 +345,9 @@ function AddRecipe(props) {
                   onClose={handleOptionsClose}
                   onOpen={handleOptionsOpen}
                   onChange={handleOptionsChange}
+                  value={optional}
                 >
-                  <MenuItem value={false}>
+                  <MenuItem value={""}>
                     <em>None</em>
                   </MenuItem>
                   <MenuItem value={true}>Yes</MenuItem>
@@ -360,6 +379,13 @@ function AddRecipe(props) {
             </ul>
           </Box>
         </Grid>
+        <TextField
+          id="measurement"
+          label="Image Url www.image.com"
+          placeholder="Enter the measurement"
+          onChange={handleImageChange}
+          className={classes.imageTextField}
+        />
       </Grid>
       <Box mb={3} ml={140} pb={30}>
         <Button
