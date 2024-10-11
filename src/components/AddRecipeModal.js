@@ -177,7 +177,7 @@ function AddRecipe(props) {
       ingredients: ingredients,
       directions: directions,
       postDate: dateAndTime,
-      images: { medium: image },
+      images: !!image ? { medium: image } : null,
     };
 
     onClose();

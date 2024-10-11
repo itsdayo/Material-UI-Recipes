@@ -70,6 +70,8 @@ function EditRecipe(props) {
   const [servings, setServings] = useState(currentRecipe.servings);
   const [prepTime, setPrepTime] = useState(currentRecipe.prepTime);
   const [cookTime, setCookTime] = useState(currentRecipe.cookTime);
+  const [image, setImage] = useState(currentRecipe.images?.medium);
+
   useEffect(() => {
     //get set state to recipe data
     setTitle(currentRecipe.title);
@@ -77,12 +79,14 @@ function EditRecipe(props) {
     setServings(currentRecipe.servings);
     setPrepTime(currentRecipe.prepTime);
     setCookTime(currentRecipe.cookTime);
+    setImage(currentRecipe.images?.medium);
   }, [
     currentRecipe.title,
     currentRecipe.description,
     currentRecipe.servings,
     currentRecipe.prepTime,
     currentRecipe.cookTime,
+    currentRecipe.images,
   ]);
 
   //close the add new recipe modal
@@ -107,6 +111,10 @@ function EditRecipe(props) {
     setCookTime(e.target.value);
   };
 
+  const handleImageChange = (e) => {
+    setImage(e.target.value);
+  };
+
   function editItem(form) {
     const date = moment().format("L");
     const time = moment().format("LTS");
@@ -122,9 +130,9 @@ function EditRecipe(props) {
       cookTime: cookTime,
       postDate: currentRecipe.postDate,
       editDate: dateAndTime,
-      images: currentRecipe.images,
       directions: currentRecipe.directions,
       ingredients: currentRecipe.ingredients,
+      images: image ? { medium: image } : null,
     };
 
     //dipatch recipe to update
@@ -173,6 +181,13 @@ function EditRecipe(props) {
                 className="instruction-text-area"
                 onChange={handleDescriptionChange}
                 value={description}
+              />
+              <InputLabel id="image">Image</InputLabel>
+              <TextField
+                id="image"
+                placeholder="Enter Image Url"
+                onChange={handleImageChange}
+                value={image}
               />
             </div>
           </form>

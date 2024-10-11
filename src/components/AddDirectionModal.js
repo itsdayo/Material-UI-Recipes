@@ -94,7 +94,7 @@ function AddDirection(props) {
   //add direction to state and save the current recipe
   function addDirection() {
     const newDirection = {
-      instructions: instruction,
+      instruction,
       optional,
     };
 

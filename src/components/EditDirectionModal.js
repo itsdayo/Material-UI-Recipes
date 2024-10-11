@@ -65,13 +65,13 @@ function EditDirection(props) {
   const { onClose, open, currentDirection, index } = props;
   const dispatch = useDispatch();
   const [openOptions, setOptionsOpen] = React.useState(false);
-  const [instruction, setInstruction] = useState(currentDirection.instructions);
+  const [instruction, setInstruction] = useState(currentDirection.instruction);
   const [optional, setOptional] = useState(currentDirection.optional);
 
   useEffect(
     () => {
       //set driection information to state
-      setInstruction(currentDirection.instructions);
+      setInstruction(currentDirection.instruction);
       setOptional(currentDirection.optional);
     },
     [currentDirection.instruction, currentDirection.optional],
@@ -101,7 +101,7 @@ function EditDirection(props) {
 
     //creating a new direction
     const newDirection = {
-      instructions: instruction,
+      instruction,
       optional: optional,
     };
 

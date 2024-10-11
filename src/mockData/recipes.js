@@ -109,50 +109,50 @@ export const mockRecipes = {
       ],
       directions: [
         {
-          instructions:
+          instruction:
             "Cook brats according to package directions. Cool slightly and halve and slice.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "In a large skillet, over medium heat, heat 1/2 cup oil in a skillet, add tortilla squares; fry until crisp.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "With a slotted spoon remove tortilla to a paper-towel lined plate to drain.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "In another skillet, sauté the onion, pepper, jalapeno and garlic in the remaining 1 tablespoon oil.",
           optional: false,
         },
         {
-          instructions: "Remove from pan and keep warm.",
+          instruction: "Remove from pan and keep warm.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "In a bowl, combine the eggs, cream, chili powder, salt and hot sauce. ",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Pour into skillet; cook, stirring occasionally until set.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Add the brats, tomatoes, black beans and tortillas; heat through.",
           optional: false,
         },
         {
-          instructions: "Sprinkle with cheese.",
+          instruction: "Sprinkle with cheese.",
           optional: true,
         },
         {
-          instructions: "Serve immediately.",
+          instruction: "Serve immediately.",
           optional: false,
         },
       ],
@@ -212,30 +212,30 @@ export const mockRecipes = {
       ],
       directions: [
         {
-          instructions: "Preheat oven to 350°F.",
+          instruction: "Preheat oven to 350°F.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "In a large bowl, combine the egg, bread crumbs, grated parmesan cheese, milk and onion.",
           optional: false,
         },
         {
-          instructions: "Add sausage to the bread crumb mixture and mix well.",
+          instruction: "Add sausage to the bread crumb mixture and mix well.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Shape into 20 meatballs; arrange on a shallow baking pan.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Bake for 20 minutes or until meatballs are cooked through (160°F).",
           optional: false,
         },
         {
-          instructions: "Serve with your favorite sauce and spaghetti.",
+          instruction: "Serve with your favorite sauce and spaghetti.",
           optional: true,
         },
       ],
@@ -313,22 +313,22 @@ export const mockRecipes = {
       ],
       directions: [
         {
-          instructions:
+          instruction:
             "In a large skillet, sauté sausage, carrot, and onion in butter until onion is tender.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Add the cabbage, thyme, salt, and pepper. Reduce heat; simmer, covered 14-16 minutes or until cabbage is tender.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Meanwhile, heat potatoes according to package directions.",
           optional: false,
         },
         {
-          instructions: "Serve with sausage mixture.",
+          instruction: "Serve with sausage mixture.",
           optional: false,
         },
       ],
@@ -382,30 +382,30 @@ export const mockRecipes = {
       ],
       directions: [
         {
-          instructions:
+          instruction:
             "Place a rack in top position of your oven and preheat to 325 F.",
           optional: false,
         },
         {
-          instructions: "Line a baking sheet with aluminum foil.",
+          instruction: "Line a baking sheet with aluminum foil.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Trim the stems of the Brussels sprouts to release outermost leaves, about 5 leaves from each sprout.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Place leaves in the bowl of sauce; toss with your fingers until all the leaves are evenly coated.",
           optional: false,
         },
         {
-          instructions: "Spread leaves on the baking sheet in a single layer.",
+          instruction: "Spread leaves on the baking sheet in a single layer.",
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Roast leaves in the preheated oven until wilted and lightly browned, about 15 minutes. Transfer any crispy leaves to a serving plate and continue roasting, removing crispy leaves at 5-minute intervals, until all leaves are crispy, about 10 minutes more.",
           optional: false,
         },
@@ -490,17 +490,17 @@ export const mockRecipes = {
       ],
       directions: [
         {
-          instructions:
+          instruction:
             'Combine milk with vinegar in a medium bowl and set aside for 5 minutes to "sour".',
           optional: false,
         },
         {
-          instructions:
+          instruction:
             'Combine flour, sugar, baking powder, baking soda, and salt in a large mixing bowl. Whisk egg and butter into "soured" milk. Pour the flour mixture into the wet ingredients and whisk until lumps are gone.',
           optional: false,
         },
         {
-          instructions:
+          instruction:
             "Heat a large skillet over medium heat, and coat with cooking spray. Pour 1/4 cupfuls of batter onto the skillet, and cook until bubbles appear on the surface. Flip with a spatula, and cook until browned on the other side.",
           optional: false,
         },
